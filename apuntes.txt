@@ -1,0 +1,86 @@
+UID /etc/passwd
+GID /etc/shadow
+
+apachectl -v
+
+Rule 1 |  | 8000 |  | 80
+
+apache2.conf --> etc/apache2/apache2.conf
+
+DirectoryIndex /etc/apache2/mods-enabled/dir.conf
+
+Debajo de ServerAdmin webmaster@localhost meter esta linea 
+	DocumentRoot /var/www/html
+
+----------------------------------------------------------------------
+ dir.conf --> /etc/apache2/mod-enabled/dir.conf
+
+En la linea que hay en el codigo introducir la pagina a mostrar
+
+	DirectoryIndex index.php index.html index.cgi ....
+
+
+----------------------------------------------------------------------
+
+Encontrar paginas activas -->  /var/www/html
+
+----------------------------------------------------------------------
+
+ErrorDocument --> /etc/apache2/conf-enabled/localized-error-pages.conf
+
+Sirve para mostrar errores cuando no encuentra las paginas indicadas en la ruta
+
+Descomentar la linea de ErrorDocument 404 y seguido poner tu html con el error
+Se quedaria asi --> ErrorDocument 404 /mostrarErrores.html 
+
+-----------------------------------------------------------------------
+
+Para cambiar contraseña al usuario poner este comando
+
+sudo htpasswd -c /etc/apache2/.htpasswd juanalarco 
+
+------------------------------------------------------------------------
+
+Crear fichero .htaccess dentro del directorio que quieras restringir
+y añadir estas lineas
+
+AuthType Basic
+AuthName "Restricted Content"
+AuthUserFile /etc/apache2/.htpasswd
+Require valid-user
+
+ErrorDocument 404 /mostrarErrores.html
+
+---------------------------------------------------------------------------------------------------------
+					HOSTS
+---------------------------------------------------------------------------------------------------------
+C:\Windows\System32\drivers\etc\hosts 
+
+Se tendria que quedar asi:
+
+# Para localhost
+127.0.0.1         localhost
+ 
+# Ejemplo para una página web
+IPUbuntu    www.google.es
+IPEquipo    www.google.es
+
+Luego ir a PROPIEDADES del archivo hosts y comprobamos que exista el usuario 
+“NETWORK” y que tenga los permisos de “Lectura y ejecución” y “Lectura”. 
+Sino existe hay lo creamos pinchando en el botón editar…
+
+-----------------------------------------------------------------------------
+
+Deshabilitar el servidor virtual por defecto: sudo a2dissite 000-default.conf
+(para volverlo a habilitar ser´ia con service apache2 reload)
+
+Habilitar hosts virtuales: sudo a2enmod vhost alias
+
+
+
+Configurar el servidor virtual para sitio1 
+(por ejemplo, con el fichero /etc/apache2/sitesavailable/software.conf
+
+
+
+
