@@ -81,6 +81,21 @@ Habilitar hosts virtuales: sudo a2enmod vhost alias
 Configurar el servidor virtual para sitio1 
 (por ejemplo, con el fichero /etc/apache2/sitesavailable/software.conf
 
+AuthUserFile /etc/apache2/.htpasswd
+sudo htpasswd -c /etc/apache2/listaUsers sacoza
+.
+.
+.
+.
+.
+Para cambiar contraseña al usuario poner este comando
 
+sudo htpasswd -c /etc/apache2/listaUsers sacoza 
+
+Crear fichero .htaccess dentro de la carpeta creada en html
+AuthType Basic
+AuthName "Restricted Content"
+AuthUserFile /etc/apache2/. listaUsers
+Require valid-user
 
 
